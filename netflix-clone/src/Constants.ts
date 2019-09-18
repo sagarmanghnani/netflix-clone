@@ -5,4 +5,5 @@ export class Constants{
 
     //related to movie genre
     public static MOVIE_GENRE = "MOVIE_GENRE";
+    public static TRENDING_MOVIE = "TRENDING_MOVIE"
 }

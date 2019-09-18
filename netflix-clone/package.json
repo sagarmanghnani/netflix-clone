@@ -24,6 +24,7 @@
     "@clr/ui": "2.2.0",
     "@ng-bootstrap/ng-bootstrap": "^5.1.1",
     "@webcomponents/custom-elements": "^1.0.0",
+    "moment": "^2.24.0",
     "rxjs": "~6.4.0",
     "tslib": "^1.10.0",
     "zone.js": "~0.9.1"

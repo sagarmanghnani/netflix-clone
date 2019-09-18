@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NetflixRequestService } from '../netflix-request.service';
 import { UtilService } from '../util.service';
 import { Constants } from 'src/Constants';
-import { MovieGenre } from 'src/modals/movie-genre';
 import { GenresData } from 'src/modals/genres';
 import { FetchDataService } from '../fetch-data.service';
+import * as moment from'moment';
+
 
 @Component({
   selector: 'app-home',
@@ -37,6 +38,8 @@ export class HomeComponent implements OnInit {
   getTrendingMovies(){
     this.netflixService.getTrendingMovies().subscribe(res => {
       this.fetchData.setTrendingMovies = res.results;
+      let currentTimeStamp = "" + (moment().startOf('day').valueOf());
+      this.utils.storeTrendingMovieForDay(res, currentTimeStamp);
     });
   }
 

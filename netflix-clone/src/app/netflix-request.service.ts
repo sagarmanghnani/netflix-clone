@@ -11,6 +11,7 @@ import { UtilService } from './util.service';
 import { GenresData } from 'src/modals/genres';
 import { MovieDataPaginate } from 'src/modals/movie-data-paginate';
 import { MovieData } from 'src/modals/movie-data';
+import * as moment from 'moment';
 @Injectable({
   providedIn: 'root'
 })
@@ -45,6 +46,24 @@ export class NetflixRequestService {
   }
 
   getTrendingMovies():Observable<MovieDataPaginate>{
+
+    let objToGet:{
+      timestamp: number,
+      moviePaginateData: MovieDataPaginate
+    } = JSON.parse(localStorage.getItem(Constants.TRENDING_MOVIE));
+    if(objToGet && objToGet.moviePaginateData && objToGet.moviePaginateData.results && objToGet.moviePaginateData.results.length > 0 ){
+      let endTime = (moment(+objToGet.timestamp).add(1, 'd').valueOf());
+      let curentTime = moment().valueOf();
+      if(curentTime > endTime){
+        return this.http.get<MovieDataPaginate>(this.TRENDING_MOVIES, {
+          headers: this.httpOptions
+        });
+      }else{
+        return of(objToGet.moviePaginateData)
+      }
+      
+    }
+
     return this.http.get<MovieDataPaginate>(this.TRENDING_MOVIES, {
       headers: this.httpOptions
     });
