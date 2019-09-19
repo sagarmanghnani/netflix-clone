@@ -5,6 +5,7 @@ import { Constants } from 'src/Constants';
 import { GenresData } from 'src/modals/genres';
 import { FetchDataService } from '../fetch-data.service';
 import * as moment from'moment';
+import { MovieData } from 'src/modals/movie-data';
 
 
 @Component({
@@ -14,6 +15,7 @@ import * as moment from'moment';
 })
 export class HomeComponent implements OnInit {
 
+  netflixDataToPass:MovieData = new MovieData();
   constructor(
     public netflixService:NetflixRequestService,
     public utils:UtilService,
@@ -38,10 +40,13 @@ export class HomeComponent implements OnInit {
   getTrendingMovies(){
     this.netflixService.getTrendingMovies().subscribe(res => {
       this.fetchData.setTrendingMovies = res.results;
+      this.netflixDataToPass = res.results[0];
       let currentTimeStamp = "" + (moment().startOf('day').valueOf());
       this.utils.storeTrendingMovieForDay(res, currentTimeStamp);
     });
   }
+
+  
 
 
 }

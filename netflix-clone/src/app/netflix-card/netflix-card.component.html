@@ -1,1 +1,27 @@
-<p>netflix-card works!</p>
+<div class="card netflix-card" (mouseenter) = "showContentOnMouseHover()" (mouseleave) = "removeContentOnMouseLeave()"  [ngClass]="{'onHover': netflixCarData['isHover']}" >
+    <div class="card-img image-container">
+        <img [src]="getMovieImage()" alt="" srcset="">
+    </div>
+
+    <div *ngIf="netflixCarData['isHover'] " >
+        <div class="netflix-detail-container">
+            <div class="netflix-title">
+                <div>
+                    {{netflixCarData.original_title}}
+                </div>
+
+                <div style="margin-left: auto;display: flex;">
+                    <img src="../../assets/icon/ratings.png" alt="" srcset="" style="height: 23px;
+    display: flex;
+    align-items: center;
+    bottom: 5px;
+    position: relative;
+    margin-right: 2px;"> {{netflixCarData.vote_average}}
+                </div>
+            </div>
+            <div class="netflix-genre">
+                {{getMovieGenre()}}
+            </div>
+        </div>
+    </div>
+</div>
