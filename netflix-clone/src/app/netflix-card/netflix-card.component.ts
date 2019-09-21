@@ -2,6 +2,7 @@ import { Component, OnInit, Input, SimpleChanges, OnChanges, Output, EventEmitte
 import { MovieData } from 'src/modals/movie-data';
 import { Constants } from 'src/Constants';
 import { UtilService } from '../util.service';
+import { Router, NavigationExtras } from '@angular/router';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class NetflixCardComponent implements OnInit, OnChanges {
   @Input() netflixCarData:MovieData;
   
   @Output() iselementHover: EventEmitter<any> = new EventEmitter(); 
-  constructor(public util:UtilService) { }
+  constructor(public util:UtilService, public router:Router) { }
 
   ngOnInit() {
     
@@ -70,6 +71,16 @@ export class NetflixCardComponent implements OnInit, OnChanges {
         genreString += `,${this.util.hashMap.get(id)}`
      });
      return genreString;
+  }
+
+
+  navigateToMovieDetailPage(){
+    let navigationExtras:NavigationExtras = {
+      state: {
+        movie_data:this.netflixCarData
+      }
+    }
+    this.router.navigate(['/movie-details'], navigationExtras);
   }
 
 }

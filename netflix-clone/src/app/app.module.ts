@@ -9,7 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { NetflixCardComponent } from './netflix-card/netflix-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NetflixCardRowComponent } from './netflix-card-row/netflix-card-row.component';
-import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap'
+import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
+import { NetflixDetailsComponent } from './netflix-details/netflix-details.component'
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap'
     AppComponent,
     HomeComponent,
     NetflixCardComponent,
-    NetflixCardRowComponent
+    NetflixCardRowComponent,
+    NetflixDetailsComponent
   ],
   imports: [
     BrowserModule,

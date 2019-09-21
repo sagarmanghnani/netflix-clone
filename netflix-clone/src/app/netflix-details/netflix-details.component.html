@@ -1,0 +1,54 @@
+<div *ngIf="netflixMovieData && netflixMovieData.id">
+    <div class="clr-row movie-container">
+        <div class="clr-col-6 movie-image-container">
+            <div style="width:100%;display: flex;justify-content: center">
+                <img [src]="getImageUrl()" alt="" srcset="">
+            </div> 
+        </div>
+
+        <div class="clr-col-6 movie-detail-container">
+            <div class="movie-title">
+                {{netflixMovieData.title}} <span class="badge badge-orange"> {{netflixMovieData.release_date | date: 'yyyy'}} </span>
+            </div>
+
+            <div class="movie-extras">
+                <div class="movie-duration">
+                    {{movieRuntimeCalculator()}}
+                </div>
+
+                <div class="movie-genre">
+                    {{getMovieGenre()}}
+                </div>
+            </div>
+
+            <div class="imdb-rating">
+                IMDB Ratings: {{netflixMovieData.vote_average}} 
+            </div>
+
+            <div class="movie-overview">
+                {{netflixMovieData.overview}}
+            </div>
+        </div>
+    </div>
+
+    <div class="clr-row">
+        <div class="clr-col-6">
+            <div class="play-btn-container">
+                    <div>
+                            <button class="btn btn-primary play">
+                                <clr-icon shape="play"></clr-icon> Play
+                            </button>
+                        </div>
+            
+                        <div>
+                                <button class="btn btn-outline list">
+                                    <clr-icon shape="list"></clr-icon>  My List
+                                </button>
+                        </div>
+            </div>
+           
+        </div>
+
+        
+    </div>
+</div>

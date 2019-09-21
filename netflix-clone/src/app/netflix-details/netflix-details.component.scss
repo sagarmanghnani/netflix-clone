@@ -1,0 +1,58 @@
+.movie-container{
+    margin-top: 1rem;
+    .movie-image-container{
+        display: flex;
+        justify-content: center;
+        height: 300px;
+        img{
+            height: 100%;
+            width: 70%;
+        }
+    
+    }
+    .movie-detail-container{
+        .movie-title{
+            font-size: 1.3rem;
+        }
+
+        .movie-extras{
+            display: flex;
+            align-items: center;
+            margin-top: 1rem;
+            .movie-duration{
+                border: 1px solid rgba(0,0,0,.12);
+                padding: 4px;
+                border-radius: 5px;
+                font-size: 0.6rem;
+            }
+
+            .movie-genre{
+                margin-left: 10px;
+                // color: gray;
+            }
+        }
+        .movie-overview{
+            max-width: 350px;
+            margin-top: 1rem;
+            color: gray;
+        }
+        .imdb-rating{
+            margin-top: 1rem;
+        }
+    }
+
+    
+}
+
+.play-btn-container{
+    display: flex;
+    width: 70%;
+    margin: auto;
+    margin-top: 0.5rem;
+    .play{
+        width: 150px;
+    }
+    .list{
+        width: 150px;
+    }
+}
