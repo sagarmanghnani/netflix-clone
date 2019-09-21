@@ -1,17 +1,19 @@
 
 <div class="netflix-card-container">
-
+        
     <div *ngIf="sliderCount > 0">
-        <button (click)="previousSlide()">Previous</button>
+        <button class="prev-btn-container" (click)="previousSlide()"><img src="../../assets/icon/left-arrow.png" alt="" srcset=""></button>
     </div>
 
-    <div *ngIf="totalPage > sliderCount">
-            <button (click)="nextSlide()">Next</button>
+    <div class="netflix-card-container">
+        <div *ngFor="let netflixData of netflixDataList | slice: (sliderCount * 4):((sliderCount+1) * 4)" [style.height] = "rowHeight ? rowHeight:'auto'" [style.width] = "columnWidth ? columnWidth: 'auto'">
+            <app-netflix-card [netflixCarData] = "netflixData" (iselementHover) = "respondToHover($event)" ></app-netflix-card>
         </div>
-    <div *ngFor="let netflixData of netflixDataList | slice: (sliderCount * 4):((sliderCount+1) * 4)" [style.height] = "rowHeight ? rowHeight:'auto'">
-        <app-netflix-card [netflixCarData] = "netflixData" (iselementHover) = "respondToHover($event)" ></app-netflix-card>
     </div>
 
-    
+    <div *ngIf="totalPage - 1 > sliderCount" >
+        
+            <button class="next-btn-container" (click)="nextSlide()"> <img src="../../assets/icon/right-arrow.png" alt="" srcset=""> </button>
+</div>
     
 </div>

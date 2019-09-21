@@ -15,6 +15,7 @@ export class NetflixCardRowComponent implements OnInit {
   sliderCount:number = 0;
   totalPage:number;
   rowHeight:string;
+  columnWidth:string;
   isHover:boolean;
   constructor() { }
 
@@ -56,9 +57,11 @@ export class NetflixCardRowComponent implements OnInit {
     if(ev.status){
       this.isHover = true;
       this.rowHeight = `${ev.height + 50}px`;
+      this.columnWidth = `${ev.width + 20}px`;
     }else{
       this.isHover = false;
       this.rowHeight = `${ev.height + 50}px`;
+      this.columnWidth = `${ev.width + 20}px`;
     }
   }
 

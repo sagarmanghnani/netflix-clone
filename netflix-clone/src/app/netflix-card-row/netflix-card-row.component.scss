@@ -1,4 +1,34 @@
 .netflix-card-container{
     display: flex;
     overflow: hidden;
+
+    .next-btn-container{
+        position: fixed;
+        right: 6px;
+        top: 119px;
+        background: transparent;
+        border: none;
+        img{
+            height: 50px;
+            width: 40px;
+        }
+    }
+    .prev-btn-container{
+        position: fixed;
+        top: 119px;
+        background: transparent;
+        border: none;
+        img{
+            height: 50px;
+            width: 40px;
+        }
+    }
+
+    .netflix-card-container{
+        margin-left: 50px;
+        margin-right: 50px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%
+    }
 }
