@@ -1,4 +1,4 @@
-<div class="card netflix-card" (mouseenter) = "showContentOnMouseHover()" (mouseleave) = "removeContentOnMouseLeave()"  [ngClass]="{'onHover': netflixCarData['isHover']}" >
+<div class="card netflix-card" (mouseenter) = "showContentOnMouseHover($event)" (mouseleave) = "removeContentOnMouseLeave($event)"  [ngClass]="{'onHover': netflixCarData['isHover']}" >
     <div class="card-img image-container">
         <img [src]="getMovieImage()" alt="" srcset="">
     </div>

@@ -1,5 +1,6 @@
-import { Component, OnInit, Input, SimpleChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { MovieData } from 'src/modals/movie-data';
+import { NetflixCardComponent } from '../netflix-card/netflix-card.component';
 
 @Component({
   selector: 'app-netflix-card-row',
@@ -8,10 +9,17 @@ import { MovieData } from 'src/modals/movie-data';
 })
 export class NetflixCardRowComponent implements OnInit {
 
+  @ViewChildren("slider") slides: QueryList<ElementRef>;
   @Input() netflixDataList:MovieData[];
+  sliceValue: number = 5;
+  sliderCount:number = 0;
+  totalPage:number;
+  rowHeight:string;
+  isHover:boolean;
   constructor() { }
 
   ngOnInit() {
+    
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -24,10 +32,34 @@ export class NetflixCardRowComponent implements OnInit {
   }
 
   ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-    // var width = document.getElementsByClassName('netflix-card-container')[0].offsetWidth;
-    console.log(width);
+    // console.log(this.slides["_results"][0]);
+    this.getTotalNumPages()
+  }
+
+  getTotalNumPages(){
+    this.totalPage = Math.floor(this.netflixDataList.length / 4);
+  }
+
+  nextSlide(){
+    if(this.totalPage > this.sliderCount){
+      this.sliderCount++;
+    }
+  }
+
+  previousSlide(){
+    if(this.sliderCount > 0){
+      this.sliderCount--;
+    }
+  }
+
+  respondToHover(ev:any){
+    if(ev.status){
+      this.isHover = true;
+      this.rowHeight = `${ev.height + 50}px`;
+    }else{
+      this.isHover = false;
+      this.rowHeight = `${ev.height + 50}px`;
+    }
   }
 
 }

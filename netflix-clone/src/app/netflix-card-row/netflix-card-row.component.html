@@ -1,6 +1,17 @@
 
 <div class="netflix-card-container">
-    <div *ngFor="let netflixData of netflixDataList">
-        <app-netflix-card [netflixCarData] = "netflixData"></app-netflix-card>
+
+    <div *ngIf="sliderCount > 0">
+        <button (click)="previousSlide()">Previous</button>
     </div>
+
+    <div *ngIf="totalPage > sliderCount">
+            <button (click)="nextSlide()">Next</button>
+        </div>
+    <div *ngFor="let netflixData of netflixDataList | slice: (sliderCount * 4):((sliderCount+1) * 4)" [style.height] = "rowHeight ? rowHeight:'auto'">
+        <app-netflix-card [netflixCarData] = "netflixData" (iselementHover) = "respondToHover($event)" ></app-netflix-card>
+    </div>
+
+    
+    
 </div>

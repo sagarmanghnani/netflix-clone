@@ -1,16 +1,21 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges, Output, EventEmitter } from '@angular/core';
 import { MovieData } from 'src/modals/movie-data';
 import { Constants } from 'src/Constants';
 import { UtilService } from '../util.service';
+
 
 @Component({
   selector: 'app-netflix-card',
   templateUrl: './netflix-card.component.html',
   styleUrls: ['./netflix-card.component.scss']
 })
-export class NetflixCardComponent implements OnInit, OnChanges {
 
-  @Input() netflixCarData:MovieData 
+
+export class NetflixCardComponent implements OnInit, OnChanges {
+  
+  @Input() netflixCarData:MovieData;
+  
+  @Output() iselementHover: EventEmitter<any> = new EventEmitter(); 
   constructor(public util:UtilService) { }
 
   ngOnInit() {
@@ -30,12 +35,33 @@ export class NetflixCardComponent implements OnInit, OnChanges {
     return `${Constants.MOVIE_URL}${this.netflixCarData.poster_path}`;
   }
 
-  showContentOnMouseHover(){
+  showContentOnMouseHover(ev){
     this.netflixCarData["isHover"] = true;
+    console.log(ev.target.clientHeight, "client height1");
+    setTimeout(() => {
+      let objToEmit = {
+        status:true,
+        height:ev.target.clientHeight,
+        width:ev.target.clientWidth
+      }
+      this.iselementHover.emit(objToEmit);
+    }, 100);
+    
   }
 
-  removeContentOnMouseLeave(){
+  removeContentOnMouseLeave(ev){
     this.netflixCarData["isHover"] = false;
+    console.log(ev.target.clientHeight, "client height2");
+
+    setTimeout(() => {
+      let objToEmit = {
+        status:false,
+        height:ev.target.clientHeight,
+        width:ev.target.clientWidth
+      }
+      this.iselementHover.emit(objToEmit);
+    }, 100);
+    
   }
 
   getMovieGenre(){
