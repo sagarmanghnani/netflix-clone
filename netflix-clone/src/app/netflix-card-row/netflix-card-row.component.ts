@@ -57,7 +57,7 @@ export class NetflixCardRowComponent implements OnInit {
     if(ev.status){
       this.isHover = true;
       this.rowHeight = `${ev.height + 50}px`;
-      this.columnWidth = `${ev.width + 20}px`;
+      this.columnWidth = `${ev.width + 80}px`;
     }else{
       this.isHover = false;
       this.rowHeight = `${ev.height + 50}px`;
