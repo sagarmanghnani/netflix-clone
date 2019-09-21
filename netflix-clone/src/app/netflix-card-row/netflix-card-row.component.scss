@@ -3,9 +3,8 @@
     overflow: hidden;
 
     .next-btn-container{
-        position: fixed;
-        right: 6px;
-        top: 119px;
+        position: relative;
+        top: 55px;
         background: transparent;
         border: none;
         img{
@@ -14,8 +13,8 @@
         }
     }
     .prev-btn-container{
-        position: fixed;
-        top: 119px;
+        position: relative;
+        top: 55px;
         background: transparent;
         border: none;
         img{
@@ -25,8 +24,8 @@
     }
 
     .netflix-card-container{
-        margin-left: 50px;
-        margin-right: 50px;
+        // margin-left: 50px;
+        // margin-right: 50px;
         display: flex;
         justify-content: space-between;
         width: 100%

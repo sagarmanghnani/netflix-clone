@@ -6,6 +6,7 @@ import { FetchDataService } from '../fetch-data.service';
 import { UtilService } from '../util.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Constants } from 'src/Constants';
+import { MovieDataPaginate } from 'src/modals/movie-data-paginate';
 
 @Component({
   selector: 'app-netflix-details',
@@ -15,6 +16,7 @@ import { Constants } from 'src/Constants';
 export class NetflixDetailsComponent implements OnInit {
   movie_data:number;
   movieDetailsMap:Map<number, MovieDetails> = new Map();
+  similarMovie:MovieDataPaginate = new MovieDataPaginate();
   constructor(
     public netflixService:NetflixRequestService,
     public fetchDataService:FetchDataService,
@@ -32,7 +34,7 @@ export class NetflixDetailsComponent implements OnInit {
   netflixCardData:MovieData;
   netflixMovieData:MovieDetails = new MovieDetails();
   ngOnInit() {
-      
+      this.getSimilarMovie(1);
   }
 
   getMovieDetails(){
@@ -93,6 +95,11 @@ export class NetflixDetailsComponent implements OnInit {
     // this.netflixMovieData.release_date
   }
 
+  getSimilarMovie(page_number:number){
+    this.netflixService.getSimilarMovie(this.netflixCardData.id, page_number).subscribe(res => {
+      this.similarMovie = res;
+    });
+  }
   
 
 }

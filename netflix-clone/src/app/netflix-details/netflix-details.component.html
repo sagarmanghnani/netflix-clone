@@ -52,3 +52,7 @@
         
     </div>
 </div>
+
+<div *ngIf="similarMovie?.results?.length > 0">
+    <app-netflix-card-row [netflixDataList] = "similarMovie.results"></app-netflix-card-row>
+</div>

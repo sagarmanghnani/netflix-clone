@@ -21,6 +21,7 @@ export class NetflixRequestService {
   MOVIE_GENRES = `${Constants.BASE_URL}genre/movie/list?api_key=${Constants.API_KEY}&language=en-US`;
   TRENDING_MOVIES = `${Constants.BASE_URL}trending/all/day?api_key=${Constants.API_KEY}`;
   MOVIE_DETAILS = `${Constants.BASE_URL}movie/`;
+  SIMILAR_MOVIES = `${Constants.BASE_URL}movie/`
 
   httpOptions;
   constructor(
@@ -85,5 +86,12 @@ export class NetflixRequestService {
         headers: this.httpOptions
       });
     }
+  }
+
+  getSimilarMovie(movie_id:number, page_number:number): Observable<MovieDataPaginate>{
+    let url = `${this.SIMILAR_MOVIES}${movie_id}/similar?api_key=${Constants.API_KEY}&page=${page_number}`;
+    return this.http.get<MovieDataPaginate>(url, {
+      headers: this.httpOptions
+    });
   }
 }
