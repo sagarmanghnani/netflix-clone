@@ -4,7 +4,7 @@ import { NetflixRequestService } from '../netflix-request.service';
 import { MovieDetails } from 'src/modals/movie-details';
 import { FetchDataService } from '../fetch-data.service';
 import { UtilService } from '../util.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { Constants } from 'src/Constants';
 import { MovieDataPaginate } from 'src/modals/movie-data-paginate';
 
@@ -17,6 +17,7 @@ export class NetflixDetailsComponent implements OnInit {
   movie_data:number;
   movieDetailsMap:Map<number, MovieDetails> = new Map();
   similarMovie:MovieDataPaginate = new MovieDataPaginate();
+  navigationSubscription;
   constructor(
     public netflixService:NetflixRequestService,
     public fetchDataService:FetchDataService,
@@ -25,16 +26,22 @@ export class NetflixDetailsComponent implements OnInit {
     public route:ActivatedRoute
   ) { 
 
-    if(this.router.getCurrentNavigation() && this.router.getCurrentNavigation().extras && this.router.getCurrentNavigation().extras.state){
-      this.netflixCardData = this.router.getCurrentNavigation().extras.state.movie_data;
-      this.getMovieDetails();
-    }
+    // if(this.router.getCurrentNavigation() && this.router.getCurrentNavigation().extras && this.router.getCurrentNavigation().extras.state){
+    //   this.netflixCardData = this.router.getCurrentNavigation().extras.state.movie_data;
+    //   this.getMovieDetails();
+    // }
+
+    this.navigationSubscription = this.router.events.subscribe((e:any) => {
+      if(e instanceof NavigationEnd){
+        this.initializeNetflixDetails();
+      }
+    })
   }
 
   netflixCardData:MovieData;
   netflixMovieData:MovieDetails = new MovieDetails();
   ngOnInit() {
-      this.getSimilarMovie(1);
+      // this.getSimilarMovie(1);
   }
 
   getMovieDetails(){
@@ -68,6 +75,12 @@ export class NetflixDetailsComponent implements OnInit {
 
     localStorage.setItem(Constants.MOVIE_DETAILS, JSON.stringify(movieDetails));
     this.fetchDataService.setMovieDetailsMap = this.movieDetailsMap;
+  }
+
+  initializeNetflixDetails(){
+    this.netflixCardData = history.state.movie_data;
+    this.getMovieDetails();
+    this.getSimilarMovie(1);
   }
 
   getImageUrl(){

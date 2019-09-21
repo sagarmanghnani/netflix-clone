@@ -3,7 +3,24 @@
         <div class="clr-col-6 movie-image-container">
             <div style="width:100%;display: flex;justify-content: center">
                 <img [src]="getImageUrl()" alt="" srcset="">
-            </div> 
+            </div>
+            
+            <div class="clr-row">
+                    <div class="play-btn-container">
+                            <div>
+                                    <button class="btn btn-primary play">
+                                        <clr-icon shape="play"></clr-icon> Play
+                                    </button>
+                                </div>
+                    
+                                <div>
+                                        <button class="btn btn-outline list">
+                                            <clr-icon shape="list"></clr-icon>  My List
+                                        </button>
+                                </div>
+                    </div>
+                   
+                </div>
         </div>
 
         <div class="clr-col-6 movie-detail-container">
@@ -29,27 +46,6 @@
                 {{netflixMovieData.overview}}
             </div>
         </div>
-    </div>
-
-    <div class="clr-row">
-        <div class="clr-col-6">
-            <div class="play-btn-container">
-                    <div>
-                            <button class="btn btn-primary play">
-                                <clr-icon shape="play"></clr-icon> Play
-                            </button>
-                        </div>
-            
-                        <div>
-                                <button class="btn btn-outline list">
-                                    <clr-icon shape="list"></clr-icon>  My List
-                                </button>
-                        </div>
-            </div>
-           
-        </div>
-
-        
     </div>
 </div>
 
