@@ -1,14 +1,26 @@
 .search-page{
+    display: flex;
+    justify-content: center;
     .search-container{
         margin-top: 1rem;
         display: flex;
+        width: 60%;
         input{
-            width: 80%;
+            width: 100%;
             margin: auto;
             height: 45px;
             border-radius: 10px;
             border: 1px solid rgba(0,0,0,.12);
+            padding-left: 10px
         }
+    }
+
+    .search-btn-container{
+        display: flex;
+        align-items: center;
+        position: relative;
+        top: 10px;
+        margin-left: 10px;
     }
 }
 

@@ -1,6 +1,9 @@
 <div class="search-page">
     <div class="search-container">
-        <input type="text" (input) = "getMovieSearchString($event)">
+        <input type="text" (input) = "getMovieSearchString($event)" placeholder="Start typing movie name to search">
+    </div>
+    <div class="search-btn-container">
+        <button class="btn btn-primary" (click)="searchByButton($event)"> <clr-icon shape="search"></clr-icon> Search </button>
     </div>
 </div>
 

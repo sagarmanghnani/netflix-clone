@@ -60,7 +60,13 @@ export class SearchMovieComponent implements OnInit {
     });
   }
 
-  
+  searchByButton(ev){
+    let val = ev.target.value;
+    if(val && val.length > 2){
+      this.isSearching = true;
+      this.getSearchResults(val, 1);
+    }
+  }
 
   getUpcomingMovies(page:number){
     this.netflixService.getUpcomingMovies(page).subscribe(res => {
