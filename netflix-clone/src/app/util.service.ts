@@ -12,6 +12,7 @@ import { FetchDataService } from './fetch-data.service';
 export class UtilService {
   hashMap:Map<number, string> = new Map();
   upcomingMovie:MovieData[] = [];
+  topRatedMovie:MovieData[] = [];
   constructor(
     public fetchService: FetchDataService
   ) { }
@@ -58,6 +59,15 @@ export class UtilService {
     };
     localStorage.setItem(Constants.UPCOMING_MOVIE, JSON.stringify(objToStore));
     this.upcomingMovie = moviePaginateData.results;
+  }
+
+  storeTopRatedMovieForDay(moviePaginateData:MovieDataPaginate, time:string){
+    let objToStore = {
+      timestamp: time,
+      moviePaginateData: moviePaginateData
+    };
+    localStorage.setItem(Constants.TOP_RATED_MOVIE, JSON.stringify(objToStore));
+    this.topRatedMovie = moviePaginateData.results;
   }
 
 

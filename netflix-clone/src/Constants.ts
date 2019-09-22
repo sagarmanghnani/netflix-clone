@@ -11,4 +11,5 @@ export class Constants{
     public static SEARCHED_MOVIE = "SEARCHED_MOVIE";
     public static POPULAR_MOVIE = "POPULAR_MOVIE";
     public static UPCOMING_MOVIE = "UPCOMING_MOVIE";
+    public static TOP_RATED_MOVIE = "TOP_RATED_MOVIE";
 }

@@ -37,3 +37,15 @@
         <app-netflix-card-row [netflixDataList] = "util?.upcomingMovie"></app-netflix-card-row>
     </div>
 </div>
+
+<div *ngIf="util?.topRatedMovie?.length > 0">
+    
+    <div class="browsing-titles">
+        Top Rated Movies
+    </div>
+
+    <div class="search-results">
+            <app-netflix-card-row [netflixDataList] = "util?.topRatedMovie"></app-netflix-card-row>
+    </div>
+
+</div>

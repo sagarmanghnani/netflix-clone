@@ -64,9 +64,18 @@ export class SearchMovieComponent implements OnInit {
 
   getUpcomingMovies(page:number){
     this.netflixService.getUpcomingMovies(page).subscribe(res => {
-      this.fetchService.popularMovie = res.results;
+      this.fetchService.upcomingMovie = res.results;
       let currentTimeStamp = "" + (moment().startOf('day').valueOf());
       this.util.storeUpcomingForDay(res, currentTimeStamp);
+    });
+    this.getTopRatedMoviesOfDay(1);
+  }
+
+  getTopRatedMoviesOfDay(page:number){
+    this.netflixService.getTopRatedMovie(page).subscribe(res => {
+      this.fetchService.topRatedMovie= res.results;
+      let currentTimeStamp = "" + (moment().startOf('day').valueOf());
+      this.util.storeTopRatedMovieForDay(res, currentTimeStamp);
     });
   }
 

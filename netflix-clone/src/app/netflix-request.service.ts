@@ -25,6 +25,7 @@ export class NetflixRequestService {
   SEARCH_MOVIES = `${Constants.BASE_URL}search/movie?api_key=${Constants.API_KEY}`;
   POPULAR_MOVIES = `${Constants.BASE_URL}movie/popular?api_key=${Constants.API_KEY}`;
   UPCOMING_MOVIES = `${Constants.BASE_URL}movie/upcoming?api_key=${Constants.API_KEY}`;
+  TOP_RATED_MOVIES = `${Constants.BASE_URL}movie/top_rated?api_key=${Constants.API_KEY}`;
 
   httpOptions;
   constructor(
@@ -132,6 +133,29 @@ export class NetflixRequestService {
   return this.http.get<MovieDataPaginate>(url, {
     headers: this.httpOptions
   });
+}
+
+getTopRatedMovie(page:number):Observable<MovieDataPaginate>{
+  let url = `${this.TOP_RATED_MOVIES}&page=${page}`;
+  let objToGet:{
+    timestamp: number,
+    moviePaginateData: MovieDataPaginate
+  } = JSON.parse(localStorage.getItem(Constants.TOP_RATED_MOVIE));
+  if(objToGet && objToGet.moviePaginateData && objToGet.moviePaginateData.results && objToGet.moviePaginateData.results.length > 0 ){
+    let endTime = (moment(+objToGet.timestamp).add(1, 'd').valueOf());
+    let curentTime = moment().valueOf();
+    if(curentTime > endTime){
+      return this.http.get<MovieDataPaginate>(url, {
+        headers: this.httpOptions
+      });
+    }else{
+      return of(objToGet.moviePaginateData);
+    }
+    
+}
+return this.http.get<MovieDataPaginate>(url, {
+  headers: this.httpOptions
+});
 }
 
 }
