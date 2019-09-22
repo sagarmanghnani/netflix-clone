@@ -3,6 +3,7 @@ import { NetflixRequestService } from '../netflix-request.service';
 import { MovieData } from 'src/modals/movie-data';
 import { UtilService } from '../util.service';
 import { FetchDataService } from '../fetch-data.service';
+import { Constants } from 'src/Constants';
 
 @Component({
   selector: 'app-search-movie',
@@ -20,6 +21,8 @@ export class SearchMovieComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.isSearching = false;
+    this.getTrendingMovie();
   }
 
   getMovieSearchString(ev:any){
@@ -29,16 +32,23 @@ export class SearchMovieComponent implements OnInit {
       this.getSearchResults(val, 1);
     }else{
       this.isSearching = false;
-      this.fetchService.getTrendingMovies().subscribe(res => {
-        this.searchedMovieDataList = res; 
-      });
+      this.getTrendingMovie();
+    }
+  }
+
+  getTrendingMovie(){
+    if(this.isSearching == false){
+      let objtToGet = JSON.parse(localStorage.getItem(Constants.TRENDING_MOVIE));
+      this.searchedMovieDataList = objtToGet.moviePaginateData.results;
     }
   }
 
   getSearchResults(search_query:string, page_number:number){
     this.netflixService.getSearchedMovie(search_query, page_number).subscribe(res => {
       this.searchedMovieDataList = res.results;
-      this.util.generateHashMapOfSearchedMovies(search_query, res);
+      if(res.results.length > 0){
+        this.util.generateHashMapOfSearchedMovies(search_query, res);
+      }
     });
   }
 
