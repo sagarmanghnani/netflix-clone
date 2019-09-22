@@ -26,15 +26,16 @@ export class NetflixCardRowComponent implements OnInit {
   ngOnChanges(changes: SimpleChanges): void {
     //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
     //Add '${implements OnChanges}' to the class.
-    if(changes['netflixData'] && changes['netflixData'].currentValue && changes['netflixData'].currentValue.length > 0){
-      this.netflixDataList = changes['netflixData'].currentValue;
+    if(changes['netflixDataList'] && changes['netflixDataList'].currentValue && changes['netflixDataList'].currentValue.length > 0){
+      this.netflixDataList = changes['netflixDataList'].currentValue;
+      this.getTotalNumPages();
     }
 
   }
 
   ngAfterViewInit(): void {
     // console.log(this.slides["_results"][0]);
-    this.getTotalNumPages()
+    
   }
 
   getTotalNumPages(){

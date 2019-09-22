@@ -93,13 +93,17 @@ export class NetflixDetailsComponent implements OnInit {
   }
 
   movieRuntimeCalculator(){
-    let hour = Math.floor(this.netflixMovieData.runtime/60);
-    let minute = Math.floor(this.netflixMovieData.runtime % 60);
-
-    if(hour){
-      return `${hour} hr ${minute} minutes`;
+    if(this.netflixMovieData && this.netflixMovieData.runtime){
+      let hour = Math.floor(this.netflixMovieData.runtime/60);
+      let minute = Math.floor(this.netflixMovieData.runtime % 60);
+  
+      if(hour){
+        return `${hour} hr ${minute} minutes`;
+      }else{
+        return `${minute} minutes`;
+      }
     }else{
-      return `${minute} minutes`;
+      return '';
     }
   }
 
@@ -108,8 +112,8 @@ export class NetflixDetailsComponent implements OnInit {
     let genreMap:Map<number, string> = this.fetchDataService.movieGenre;
     this.netflixCardData.genre_ids.forEach(genreId => {
       genreString += `, ${genreMap.get(genreId)}`;
-      genreString = genreString.slice(1);
     });
+    genreString = genreString.slice(1);
     return genreString;
     // this.netflixMovieData.release_date
   }
