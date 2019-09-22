@@ -68,6 +68,7 @@ export class NetflixCardComponent implements OnInit, OnChanges {
      this.netflixCarData.genre_ids.forEach(id => {
         genreString += `,${this.util.hashMap.get(id)}`
      });
+     genreString = genreString.slice(1);
      return genreString;
   }
 

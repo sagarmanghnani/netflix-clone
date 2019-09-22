@@ -12,8 +12,8 @@ export class AppComponent {
     public router:Router
   ) {}
 
-  navigateToSearchPage(){
-    this.router.navigate(['/search-movies'])
+  navigateToHomePage(){
+    this.router.navigate(['home']);
   }
 }
 

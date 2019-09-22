@@ -79,8 +79,13 @@ export class NetflixDetailsComponent implements OnInit {
 
   initializeNetflixDetails(){
     this.netflixCardData = history.state.movie_data;
-    this.getMovieDetails();
-    this.getSimilarMovie(1);
+    if(this.netflixCardData && this.netflixCardData.id){
+      this.getMovieDetails();
+      this.getSimilarMovie(1);
+     }
+    //else{
+    //   this.router.navigate(['']);
+    // }
   }
 
   getImageUrl(){
@@ -103,6 +108,7 @@ export class NetflixDetailsComponent implements OnInit {
     let genreMap:Map<number, string> = this.fetchDataService.movieGenre;
     this.netflixCardData.genre_ids.forEach(genreId => {
       genreString += `,${genreMap.get(genreId)}`;
+      genreString = genreString.slice(1);
     });
     return genreString;
     // this.netflixMovieData.release_date

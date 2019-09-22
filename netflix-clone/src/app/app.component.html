@@ -1,13 +1,13 @@
 
 <div>
   <header>
-      <div class="branding">
+      <div class="branding branding-alignment" (click)="navigateToHomePage()">
           Netflix Clone
       </div>
 
       <div class="header-nav">
-          <div class="active nav-link nav-text">Home</div>
-          <div class="nav-link nav-text" (click)="navigateToSearchPage()">Search</div>
+          <a [routerLink] = "['home']" routerLinkActive="active" class="nav-link nav-text">Home</a>
+          <a  [routerLink] = "['search-movies']" routerLinkActive="active" class="nav-link nav-text">Search</a>
       </div>
   </header>
 </div>

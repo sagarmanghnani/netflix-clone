@@ -6,7 +6,8 @@ import { SearchMovieComponent } from './search-movie/search-movie.component';
 
 
 const routes: Routes = [
-  {path: '' ,pathMatch: 'full', component: HomeComponent},
+  {path: '' ,pathMatch: 'full', redirectTo: 'home'},
+  {path: 'home', component: HomeComponent},
   {path: 'movie-details', component: NetflixDetailsComponent, runGuardsAndResolvers: 'always'},
   {path: 'search-movies', component:SearchMovieComponent}
 ];
