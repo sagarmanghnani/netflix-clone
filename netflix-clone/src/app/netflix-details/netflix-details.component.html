@@ -32,23 +32,45 @@
                 {{netflixMovieData.title}} <span class="badge badge-orange"> {{netflixMovieData.release_date | date: 'yyyy'}} </span>
             </div>
 
+            <div class="title-width ghost-loader" *ngIf="!netflixMovieData || !netflixMovieData.title ">
+                    
+            </div>
+
             <div class="movie-extras">
-                <div class="movie-duration">
+                <div class="movie-duration" *ngIf="movieRuntimeCalculator()">
                     {{movieRuntimeCalculator()}}
                 </div>
 
-                <div class="movie-genre">
+                <div class="movie-duration-placebo ghost-loader" *ngIf="!movieRuntimeCalculator()">
+
+                </div>
+
+                <div class="movie-genre" *ngIf="getMovieGenre()">
                     {{getMovieGenre()}}
                 </div>
+
+                <div class="movie-genre-placebo ghost-loader" *ngIf="!getMovieGenre()">
+
+                    </div>
             </div>
 
-            <div class="imdb-rating">
+            
+
+            <div class="imdb-rating" *ngIf="netflixMovieData?.vote_average">
                 IMDB Ratings: {{netflixMovieData.vote_average}} 
             </div>
 
-            <div class="movie-overview">
+            <div class="imdb-rating-placebo ghost-loader" *ngIf="!netflixMovieData || !netflixMovieData.vote_average">
+
+            </div>
+
+            <div class="movie-overview" *ngIf="netflixMovieData?.overview">
                 {{netflixMovieData.overview}}
             </div>
+
+            <div class="movie-overview-placebo ghost-loader" *ngIf="!netflixMovieData || !netflixMovieData.overview ">
+                    
+             </div>
         </div>
     </div>
 </div>

@@ -107,7 +107,7 @@ export class NetflixDetailsComponent implements OnInit {
     let genreString = '';
     let genreMap:Map<number, string> = this.fetchDataService.movieGenre;
     this.netflixCardData.genre_ids.forEach(genreId => {
-      genreString += `,${genreMap.get(genreId)}`;
+      genreString += `, ${genreMap.get(genreId)}`;
       genreString = genreString.slice(1);
     });
     return genreString;

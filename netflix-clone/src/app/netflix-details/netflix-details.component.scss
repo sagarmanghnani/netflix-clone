@@ -23,6 +23,11 @@
             font-size: 1.3rem;
         }
 
+        .title-width{
+            width:250px;
+            height: 20px;;
+        }
+
         .movie-extras{
             display: flex;
             align-items: center;
@@ -34,9 +39,20 @@
                 font-size: 0.6rem;
             }
 
+            .movie-duration-placebo{
+                width: 100px;
+                height: 20px;;
+            }
+
             .movie-genre{
                 margin-left: 10px;
                 // color: gray;
+            }
+
+            .movie-genre-placebo{
+                margin-left: 10px;
+                width: 180px;
+                height: 20px;
             }
         }
         .movie-overview{
@@ -44,8 +60,19 @@
             margin-top: 1rem;
             color: gray;
         }
+
+        .movie-overview-placebo{
+            width: 350px;
+            margin-top: 1rem;
+            height: 350px;
+        }
         .imdb-rating{
             margin-top: 1rem;
+        }
+
+        .imdb-rating-placebo{
+            width: 130px;
+            height: 20px;;
         }
     }
 
