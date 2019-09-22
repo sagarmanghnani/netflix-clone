@@ -12,6 +12,7 @@ export class FetchDataService {
   private _trendingMovies: Subject<MovieData[]>= new Subject();
   private _movieDetailsMap:Map<number, MovieDetails> = new Map();
   private _movieGenreMap:Map<number, string> = new Map();
+  private _popularMovies: Subject<MovieData[]> = new Subject();
   constructor() { }
 
   set setTrendingMovies(movies:MovieData[]){
@@ -36,6 +37,14 @@ export class FetchDataService {
 
   get movieGenre(){
     return this._movieGenreMap;
+  }
+
+  set popularMovie(movies:MovieData[]){
+    this._popularMovies.next(movies);
+  }
+
+  getPopularMovies(){
+    return this._popularMovies.asObservable();
   }
   
 }

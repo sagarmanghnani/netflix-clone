@@ -11,6 +11,7 @@ import { FetchDataService } from './fetch-data.service';
 })
 export class UtilService {
   hashMap:Map<number, string> = new Map();
+  upcomingMovie:MovieData[] = [];
   constructor(
     public fetchService: FetchDataService
   ) { }
@@ -48,6 +49,15 @@ export class UtilService {
         localStorage.setItem(Constants.SEARCHED_MOVIE, JSON.stringify(Array.from(moviePaginateData.entries())));
       }
     }
+  }
+
+  storeUpcomingForDay(moviePaginateData:MovieDataPaginate, time:string){
+    let objToStore = {
+      timestamp: time,
+      moviePaginateData: moviePaginateData
+    };
+    localStorage.setItem(Constants.UPCOMING_MOVIE, JSON.stringify(objToStore));
+    this.upcomingMovie = moviePaginateData.results;
   }
 
 

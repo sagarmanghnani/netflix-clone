@@ -4,7 +4,7 @@ import { MovieData } from 'src/modals/movie-data';
 import { UtilService } from '../util.service';
 import { FetchDataService } from '../fetch-data.service';
 import { Constants } from 'src/Constants';
-
+import * as moment from'moment';
 @Component({
   selector: 'app-search-movie',
   templateUrl: './search-movie.component.html',
@@ -14,6 +14,7 @@ export class SearchMovieComponent implements OnInit {
 
   searchedMovieDataList:MovieData[] = [];
   isSearching:boolean;
+  resultsFound:boolean;
   constructor(
     public netflixService:NetflixRequestService,
     public util:UtilService,
@@ -37,18 +38,35 @@ export class SearchMovieComponent implements OnInit {
   }
 
   getTrendingMovie(){
-    if(this.isSearching == false){
+    
       let objtToGet = JSON.parse(localStorage.getItem(Constants.TRENDING_MOVIE));
       this.searchedMovieDataList = objtToGet.moviePaginateData.results;
-    }
+      this.getUpcomingMovies(1);
+    
   }
 
   getSearchResults(search_query:string, page_number:number){
     this.netflixService.getSearchedMovie(search_query, page_number).subscribe(res => {
       this.searchedMovieDataList = res.results;
       if(res.results.length > 0){
+        this.resultsFound = true;
         this.util.generateHashMapOfSearchedMovies(search_query, res);
+      }else{
+        this.resultsFound = false;
+        this.getTrendingMovie();
+        // this.getUpcomingMovies(1);
       }
+      
+    });
+  }
+
+  
+
+  getUpcomingMovies(page:number){
+    this.netflixService.getUpcomingMovies(page).subscribe(res => {
+      this.fetchService.popularMovie = res.results;
+      let currentTimeStamp = "" + (moment().startOf('day').valueOf());
+      this.util.storeUpcomingForDay(res, currentTimeStamp);
     });
   }
 

@@ -38,7 +38,6 @@ export class NetflixCardComponent implements OnInit, OnChanges {
 
   showContentOnMouseHover(ev){
     this.netflixCarData["isHover"] = true;
-    console.log(ev.target.clientHeight, "client height1");
     setTimeout(() => {
       let objToEmit = {
         status:true,
@@ -52,7 +51,6 @@ export class NetflixCardComponent implements OnInit, OnChanges {
 
   removeContentOnMouseLeave(ev){
     this.netflixCarData["isHover"] = false;
-    console.log(ev.target.clientHeight, "client height2");
 
     setTimeout(() => {
       let objToEmit = {
