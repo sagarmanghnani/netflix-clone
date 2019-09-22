@@ -26,6 +26,7 @@ export class NetflixRequestService {
   POPULAR_MOVIES = `${Constants.BASE_URL}movie/popular?api_key=${Constants.API_KEY}`;
   UPCOMING_MOVIES = `${Constants.BASE_URL}movie/upcoming?api_key=${Constants.API_KEY}`;
   TOP_RATED_MOVIES = `${Constants.BASE_URL}movie/top_rated?api_key=${Constants.API_KEY}`;
+  MOVIE_BY_GENRES = `${Constants.BASE_URL}discover/movie?api_key=${Constants.API_KEY}&with_genres=`
 
   httpOptions;
   constructor(
@@ -112,6 +113,22 @@ export class NetflixRequestService {
       });
     }
   }
+
+  getMoviesByGenre(genre_id):Observable<MovieDataPaginate>{
+    
+    let genreHashMap:Map<number, MovieDataPaginate> = new Map();
+    genreHashMap = new Map(JSON.parse(localStorage.getItem(Constants.MOVIE_BY_GENRE)));
+    if(genreHashMap && genreHashMap.size > 0 && genreHashMap.has(genre_id)){
+      return of(genreHashMap.get(genre_id));
+    }else{
+      let url = `${this.MOVIE_BY_GENRES}${genre_id}`;
+      return this.http.get<MovieDataPaginate>(url, {
+        headers: this.httpOptions
+      });
+    }
+  }
+
+
 
   getUpcomingMovies(page:number):Observable<MovieDataPaginate> {
     let url = `${this.UPCOMING_MOVIES}&page=${page}`;

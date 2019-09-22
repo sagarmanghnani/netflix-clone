@@ -52,6 +52,23 @@ export class UtilService {
     }
   }
 
+  generateMapOfGenreMovies(genre_id, movieData:MovieDataPaginate){
+    let moviePaginateData:Map<number, MovieDataPaginate> = new Map();
+    moviePaginateData = new Map(JSON.parse(localStorage.getItem(Constants.MOVIE_BY_GENRE)));
+    if(moviePaginateData && moviePaginateData.size > 0){
+      if(!moviePaginateData.has(genre_id) && movieData.results.length > 0 ){
+        moviePaginateData.set(genre_id, movieData);
+        localStorage.setItem(Constants.MOVIE_BY_GENRE, JSON.stringify(Array.from(moviePaginateData.entries())));
+      }
+    }else{
+      if(movieData.results.length > 0){
+        moviePaginateData = new Map();
+        moviePaginateData.set(genre_id, movieData);
+        localStorage.setItem(Constants.MOVIE_BY_GENRE,JSON.stringify(Array.from(moviePaginateData.entries())));
+      }
+    }
+  }
+
   storeUpcomingForDay(moviePaginateData:MovieDataPaginate, time:string){
     let objToStore = {
       timestamp: time,

@@ -1,5 +1,53 @@
 <!-- <app-netflix-card [netflixCarData] = "netflixDataToPass"></app-netflix-card> -->
+<div class="home-page">
+    <div *ngIf="netflixDataToPass?.length > 0"> 
+        <div class="browsing-titles">
+            Trending Movies
+        </div>
+        <div class="search-results">
+            <app-netflix-card-row [netflixDataList] = "netflixDataToPass"></app-netflix-card-row>
+        </div>
+    </div>
 
-<app-netflix-card-row [netflixDataList] = "netflixDataToPass"></app-netflix-card-row>
+    <div *ngIf="horrorMovieData?.length > 0">
+        <div class="browsing-titles">
+            Horror Movies
+        </div>
+
+        <div class="search-results">
+            <app-netflix-card-row [netflixDataList] = "horrorMovieData"></app-netflix-card-row>
+        </div>
+    </div>
+
+    <div *ngIf="comedyMovieData?.length > 0">
+            <div class="browsing-titles">
+                Comedy Movies
+            </div>
+    
+            <div class="search-results">
+                <app-netflix-card-row [netflixDataList] = "comedyMovieData"></app-netflix-card-row>
+            </div>
+        </div>
+
+        <div *ngIf="crimeMovieData?.length > 0">
+                <div class="browsing-titles">
+                    Crime Movies
+                </div>
+        
+                <div class="search-results">
+                    <app-netflix-card-row [netflixDataList] = "crimeMovieData"></app-netflix-card-row>
+                </div>
+            </div>
+
+            <div *ngIf="actionMovieData?.length > 0">
+                    <div class="browsing-titles">
+                        Action Movies
+                    </div>
+            
+                    <div class="search-results">
+                        <app-netflix-card-row [netflixDataList] = "actionMovieData"></app-netflix-card-row>
+                    </div>
+                </div>
+</div>
 
 <!-- <app-netflix-details></app-netflix-details> -->
