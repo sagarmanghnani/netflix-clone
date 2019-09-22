@@ -21,7 +21,8 @@ export class NetflixRequestService {
   MOVIE_GENRES = `${Constants.BASE_URL}genre/movie/list?api_key=${Constants.API_KEY}&language=en-US`;
   TRENDING_MOVIES = `${Constants.BASE_URL}trending/all/day?api_key=${Constants.API_KEY}`;
   MOVIE_DETAILS = `${Constants.BASE_URL}movie/`;
-  SIMILAR_MOVIES = `${Constants.BASE_URL}movie/`
+  SIMILAR_MOVIES = `${Constants.BASE_URL}movie/`;
+  SEARCH_MOVIES = `${Constants.BASE_URL}search/movie?api_key=${Constants.API_KEY}`;
 
   httpOptions;
   constructor(
@@ -93,5 +94,19 @@ export class NetflixRequestService {
     return this.http.get<MovieDataPaginate>(url, {
       headers: this.httpOptions
     });
+  }
+
+  getSearchedMovie(search_query:string, page_number:number):Observable<MovieDataPaginate>{
+
+    let searchHashMap:Map<string, MovieDataPaginate> = new Map();
+    searchHashMap = new Map(JSON.parse(localStorage.getItem(Constants.SEARCHED_MOVIE)));
+    if(searchHashMap && searchHashMap.size > 0 && searchHashMap.has(search_query)){
+        return of(searchHashMap.get(search_query));
+    }else{
+      let url = `${this.SEARCH_MOVIES}&query=${search_query}&page=${page_number}`;
+      return this.http.get<MovieDataPaginate>(url, {
+        headers: this.httpOptions
+      });
+    }
   }
 }

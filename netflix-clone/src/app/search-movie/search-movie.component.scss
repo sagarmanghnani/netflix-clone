@@ -1,0 +1,13 @@
+.search-page{
+    .search-container{
+        margin-top: 1rem;
+        display: flex;
+        input{
+            width: 80%;
+            margin: auto;
+            height: 45px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,.12);
+        }
+    }
+}

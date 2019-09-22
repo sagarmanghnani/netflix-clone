@@ -10,7 +10,8 @@ import { NetflixCardComponent } from './netflix-card/netflix-card.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NetflixCardRowComponent } from './netflix-card-row/netflix-card-row.component';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
-import { NetflixDetailsComponent } from './netflix-details/netflix-details.component'
+import { NetflixDetailsComponent } from './netflix-details/netflix-details.component';
+import { SearchMovieComponent } from './search-movie/search-movie.component'
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { NetflixDetailsComponent } from './netflix-details/netflix-details.compo
     HomeComponent,
     NetflixCardComponent,
     NetflixCardRowComponent,
-    NetflixDetailsComponent
+    NetflixDetailsComponent,
+    SearchMovieComponent
   ],
   imports: [
     BrowserModule,

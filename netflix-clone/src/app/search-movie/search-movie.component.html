@@ -1,0 +1,9 @@
+<div class="search-page">
+    <div class="search-container">
+        <input type="text" (input) = "getMovieSearchString($event)">
+    </div>
+</div>
+
+<div *ngIf="searchedMovieDataList && searchedMovieDataList.length > 0">
+    <app-netflix-card-row [netflixDataList] = "searchedMovieDataList"></app-netflix-card-row>
+</div>

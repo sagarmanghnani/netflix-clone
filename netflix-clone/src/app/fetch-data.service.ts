@@ -18,7 +18,7 @@ export class FetchDataService {
     this._trendingMovies.next(movies);
   }
 
-  get getTrendingMovies(){
+  getTrendingMovies(){
     return this._trendingMovies.asObservable();
   }
 

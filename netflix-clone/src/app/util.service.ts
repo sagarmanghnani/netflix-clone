@@ -32,4 +32,21 @@ export class UtilService {
     localStorage.setItem(Constants.TRENDING_MOVIE, JSON.stringify(objToStore));
   }
 
+
+  generateHashMapOfSearchedMovies(search_query:string, movieData:MovieDataPaginate){
+    let moviePaginateData:Map<string, MovieDataPaginate> = new Map();
+    moviePaginateData = new Map(JSON.parse(localStorage.getItem(Constants.SEARCHED_MOVIE)));
+    if(moviePaginateData && moviePaginateData.size > 0){
+      if(!moviePaginateData.has(search_query)){
+        moviePaginateData.set(search_query, movieData);
+        localStorage.setItem(Constants.SEARCHED_MOVIE, JSON.stringify(Array.from(moviePaginateData.entries())));
+      }
+    }else{
+      moviePaginateData = new Map();
+      moviePaginateData.set(search_query, movieData);
+      localStorage.setItem(Constants.SEARCHED_MOVIE, JSON.stringify(Array.from(moviePaginateData.entries())));
+    }
+  }
+
+
 }

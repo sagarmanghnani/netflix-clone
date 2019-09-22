@@ -7,5 +7,6 @@ export class Constants{
     public static MOVIE_GENRE = "MOVIE_GENRE";
     public static TRENDING_MOVIE = "TRENDING_MOVIE";
     public static MOVIE_URL = "https://image.tmdb.org/t/p/w500/";
-    public static MOVIE_DETAILS = "MOVIE_DETAILS"
+    public static MOVIE_DETAILS = "MOVIE_DETAILS";
+    public static SEARCHED_MOVIE = "SEARCHED_MOVIE";
 }
