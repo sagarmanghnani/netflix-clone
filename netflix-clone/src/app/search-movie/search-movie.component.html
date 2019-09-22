@@ -8,11 +8,11 @@
 </div>
 
 <div *ngIf="searchedMovieDataList && searchedMovieDataList.length > 0 && resultsFound">
-    <div *ngIf="!isSearching" class="browsing-titles">
+    <div *ngIf="!isSearching && searchedMovieDataList && searchedMovieDataList.length > 0" class="browsing-titles">
         Trending Movies of the day
     </div>
 
-    <div *ngIf="isSearching" class="browsing-titles">
+    <div *ngIf="isSearching && searchedMovieDataList && searchedMovieDataList?.length > 0" class="browsing-titles">
         Search results
     </div>
     <div class="search-results">
@@ -25,15 +25,15 @@
         Sorry! No results found. But you may also like
     </div>
 
-    <div *ngIf="searchedMovieDataList?.length > 0" class="search-results">
+    <div  class="search-results">
         <app-netflix-card-row [netflixDataList] = "searchedMovieDataList"></app-netflix-card-row>
     </div>
 
 </div>
 
-<div *ngIf="util?.upcomingMovie?.length > 0">
+<div >
 
-    <div class="browsing-titles">
+    <div class="browsing-titles" *ngIf="util?.upcomingMovie?.length > 0">
         Upcoming Movies
     </div>
     <div class="search-results">
@@ -41,9 +41,9 @@
     </div>
 </div>
 
-<div *ngIf="util?.topRatedMovie?.length > 0">
+<div >
     
-    <div class="browsing-titles">
+    <div class="browsing-titles" *ngIf="util?.topRatedMovie?.length > 0">
         Top Rated Movies
     </div>
 

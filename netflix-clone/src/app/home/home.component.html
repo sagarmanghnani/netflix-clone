@@ -1,7 +1,7 @@
 <!-- <app-netflix-card [netflixCarData] = "netflixDataToPass"></app-netflix-card> -->
 <div class="home-page">
-    <div *ngIf="netflixDataToPass?.length > 0"> 
-        <div class="browsing-titles">
+    <div > 
+        <div class="browsing-titles" *ngIf="netflixDataToPass?.length > 0">
             Trending Movies
         </div>
         <div class="search-results">
@@ -9,8 +9,8 @@
         </div>
     </div>
 
-    <div *ngIf="horrorMovieData?.length > 0">
-        <div class="browsing-titles">
+    <div >
+        <div class="browsing-titles" *ngIf="horrorMovieData?.length > 0">
             Horror Movies
         </div>
 
@@ -19,8 +19,8 @@
         </div>
     </div>
 
-    <div *ngIf="comedyMovieData?.length > 0">
-            <div class="browsing-titles">
+    <div >
+            <div class="browsing-titles" *ngIf="comedyMovieData?.length > 0">
                 Comedy Movies
             </div>
     
@@ -29,22 +29,22 @@
             </div>
         </div>
 
-        <div *ngIf="crimeMovieData?.length > 0">
-                <div class="browsing-titles">
+        <div >
+                <div class="browsing-titles" *ngIf="crimeMovieData?.length > 0">
                     Crime Movies
                 </div>
         
-                <div class="search-results">
+                <div class="search-results" >
                     <app-netflix-card-row [netflixDataList] = "crimeMovieData"></app-netflix-card-row>
                 </div>
             </div>
 
-            <div *ngIf="actionMovieData?.length > 0">
-                    <div class="browsing-titles">
+            <div >
+                    <div class="browsing-titles" *ngIf="actionMovieData?.length > 0">
                         Action Movies
                     </div>
             
-                    <div class="search-results">
+                    <div class="search-results" >
                         <app-netflix-card-row [netflixDataList] = "actionMovieData"></app-netflix-card-row>
                     </div>
                 </div>

@@ -11,7 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { NetflixCardRowComponent } from './netflix-card-row/netflix-card-row.component';
 import {NgbCarouselModule} from '@ng-bootstrap/ng-bootstrap';
 import { NetflixDetailsComponent } from './netflix-details/netflix-details.component';
-import { SearchMovieComponent } from './search-movie/search-movie.component'
+import { SearchMovieComponent } from './search-movie/search-movie.component';
+import { LoaderRowComponent } from './loader-row/loader-row.component'
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SearchMovieComponent } from './search-movie/search-movie.component'
     NetflixCardComponent,
     NetflixCardRowComponent,
     NetflixDetailsComponent,
-    SearchMovieComponent
+    SearchMovieComponent,
+    LoaderRowComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-<div class="card netflix-card" (mouseenter) = "showContentOnMouseHover($event)" (mouseleave) = "removeContentOnMouseLeave($event)" (click)="navigateToMovieDetailPage()"  [ngClass]="{'onHover': netflixCarData['isHover']}" >
+<div class="card netflix-card" (mouseenter) = "showContentOnMouseHover($event)" (mouseleave) = "removeContentOnMouseLeave($event)" (click)="navigateToMovieDetailPage()"  [ngClass]="{'onHover': netflixCarData['isHover']}"  *ngIf="netflixCarData && netflixCarData.id" >
     <div class="card-img image-container">
         <img [src]="getMovieImage()" alt="" srcset="">
     </div>
@@ -23,5 +23,11 @@
                 {{getMovieGenre()}}
             </div>
         </div>
+    </div>
+</div>
+
+<div class="card ghost-loader-container" *ngIf="!netflixCarData || !netflixCarData.id">
+    <div class="ghost-loader">
+        
     </div>
 </div>

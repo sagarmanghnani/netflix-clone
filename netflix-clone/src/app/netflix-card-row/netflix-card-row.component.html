@@ -1,5 +1,5 @@
 
-<div class="netflix-card-container">
+<div class="netflix-card-container" *ngIf="netflixDataList?.length > 0">
         
     <div *ngIf="sliderCount > 0">
         <button class="prev-btn-container" (click)="previousSlide()"><img src="../../assets/icon/left-arrow.png" alt="" srcset=""></button>
@@ -16,4 +16,9 @@
             <button class="next-btn-container" (click)="nextSlide()"> <img src="../../assets/icon/right-arrow.png" alt="" srcset=""> </button>
 </div>
     
+</div>
+
+
+<div *ngIf="!netflixDataList || netflixDataList?.length == 0">
+    <app-loader-row></app-loader-row>
 </div>
