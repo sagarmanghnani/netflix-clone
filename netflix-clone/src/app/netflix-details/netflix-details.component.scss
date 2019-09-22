@@ -9,6 +9,13 @@
             height: 350px;
             width: 73%;
         }
+        .image-container{
+            .image-placebo{
+                height: 350px;
+                width:73%;
+            }
+        }
+        
     
     }
     .movie-detail-container{
@@ -63,4 +70,29 @@
     font-size: 1rem;
     margin: auto;
     margin-top: 1rem;
+}
+
+.similar-movie-container{
+    padding-left: 16px
+}
+
+@keyframes placeHolderShimmer{
+    0%{
+        background-position: -468px 0
+    }
+    100%{
+        background-position: 468px 0
+    }
+}
+
+.ghost-loader{
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: #f6f7f8;
+    background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+    background-size: 800px 104px;
+    position: relative;
 }

@@ -1,10 +1,14 @@
-<div *ngIf="netflixMovieData && netflixMovieData.id">
+<div >
     <div class="clr-row movie-container">
         <div class="clr-col-6 movie-image-container">
-            <div style="width:100%;display: flex;justify-content: center">
+            <div style="width:100%;display: flex;justify-content: center" *ngIf="netflixMovieData && netflixMovieData.id">
                 <img [src]="getImageUrl()" alt="" srcset="">
             </div>
             
+            <div class="ghost-loader image-container" *ngIf="!netflixMovieData || !netflixMovieData.id">
+                <div class="image-placebo"></div>
+            </div>
+
             <div class="clr-row">
                     <div class="play-btn-container">
                             <div>
@@ -24,7 +28,7 @@
         </div>
 
         <div class="clr-col-6 movie-detail-container">
-            <div class="movie-title">
+            <div class="movie-title" *ngIf="netflixMovieData.title">
                 {{netflixMovieData.title}} <span class="badge badge-orange"> {{netflixMovieData.release_date | date: 'yyyy'}} </span>
             </div>
 
@@ -53,6 +57,6 @@
     Similar Movies to " {{netflixMovieData.title}} " 
 </div>
 
-<div *ngIf="similarMovie?.results?.length > 0">
+<div class="similar-movie-container">
     <app-netflix-card-row [netflixDataList] = "similarMovie.results"></app-netflix-card-row>
 </div>
