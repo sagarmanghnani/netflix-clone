@@ -13,3 +13,5 @@
 
 #Screenshots
 ![alt text](https://i.imgur.com/AMmveEH.png);
+![alt text](https://i.imgur.com/mP3ab0f.png);
+![alt text](https://i.imgur.com/7n1f4As.png);
