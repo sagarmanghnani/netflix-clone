@@ -9,3 +9,7 @@
 5. Api response caching of movies
 6. Content placeholder added for the loading
 7. Movie card zoom on hover and provide extra details on hover
+
+
+#Screenshots
+![alt text](https://i.imgur.com/AMmveEH.png);
