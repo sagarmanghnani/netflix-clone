@@ -1,6 +1,6 @@
 # netflix-clone (https://sagarmanghnani.github.io/netflix-clone/)
 
-#Features
+# Features
 
 1. Trending Movies, upcoming movie, top rated movies shown in home page
 2. Movie search on search box on type to find instantaneouly movie search result
